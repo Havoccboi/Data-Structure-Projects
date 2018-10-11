@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#define eps 1e-4
 
 using namespace std;
 
@@ -12,6 +13,10 @@ public:
     {
         this->re=r;
         this->im=i;
+    }
+    int operator != (const Complex &c)
+    {
+        return(abs(this->re-c.re)+ abs(this->im-c.im) >= eps);
     }
     Complex operator + (const Complex &c)
     {
@@ -35,7 +40,8 @@ public:
 };
 int main()
 {
-    Complex<int> a(1,2);
-    Complex<int> b(1,-2);
-    cout << (a*b);
+    Complex<double> a(1.00,2.000);
+    Complex<double> b(1.0,2.00001);
+    cout <<(a!=b);
+    //cout << a+b <<endl;
 }
