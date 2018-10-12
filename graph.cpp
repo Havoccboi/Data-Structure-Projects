@@ -1,4 +1,4 @@
-  #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 #define N int(1e5)
@@ -6,6 +6,19 @@ using namespace std;
 bool visited[N];
 
 vector<vector<int> > ptr(N+1);
+
+void dfs(int src, bool *visited)
+{
+    visited[src]=1;
+    cout << src<< " ";
+    for(auto a:ptr[src])
+    {
+        if(!visited[a])
+            dfs(a,visited);
+    }
+
+}
+
 
 int main()
 {
