@@ -6,7 +6,7 @@ using namespace std;
 bool visited[N];
 
 vector<vector<int> > ptr(N+1);
-
+void bfs(int src);
 void dfs(int src, bool *visited)
 {
     visited[src]=1;
