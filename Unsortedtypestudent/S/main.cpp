@@ -1,5 +1,5 @@
 #include <iostream>
-#include "UnsortedType.cpp"
+#include "UnsortedType.cpp" //if template present use include .cpp instead of .h
 #include "StudentInfo.h"
 
 using namespace std;
