@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1540010038 source:c:\users\nsuit-lab\desktop\s\s\main.cpp
+	<iostream>
+	"StudentInfo.h"
+
+1540010542 c:\users\nsuit-lab\desktop\s\s\studentinfo.h
+	<string>
+
+1540010878 source:c:\users\nsuit-lab\desktop\s\s\studentinfo.cpp
+	<string>
+	"StudentInfo.h"
+
