@@ -1,5 +1,5 @@
 #include <iostream>
-#include "UnsortedType.cpp" //if template present use include .cpp instead of .h
+#include "UnsortedType.cpp"
 #include "StudentInfo.h"
 
 using namespace std;
@@ -88,7 +88,22 @@ int main()
     bool found=0;
 
     data.ResetList();
-    Student temp;
+    Student temp("",x,0.0);
+    //done
+    data.ResetList();
+    data.RetrieveItem(temp,found);
+    if(found)
+    {
+        cout <<"found.\n";
+        data.DeleteItem(temp);
+    }
+    else
+        cout <<"not found\n";
+    print();
+}
+
+/*
+    hard way:
     for(int i=0;i<data.LengthIs();i++)
     {
         data.GetNextItem(temp);
@@ -98,16 +113,4 @@ int main()
             break;
         }
     }
-    data.DeleteItem(temp);
-    data.ResetList();
-
-    if(found)
-        cout <<"found\n.";
-    else
-        cout <<"not found\n";
-    print();
-
-
-
-
-}
+*/
