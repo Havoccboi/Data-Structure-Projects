@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1540452650 source:c:\users\my pc\desktop\1813077042\sortedarray\sortedtype.cpp
+	"sortedtype.h"
+
+1540452574 c:\users\my pc\desktop\1813077042\sortedarray\sortedtype.h
+
+1540454887 source:c:\users\my pc\desktop\1813077042\sortedarray\main.cpp
+	<iostream>
+	"SortedType.cpp"
+
+1540452650 c:\users\my pc\desktop\1813077042\sortedarray\sortedtype.cpp
+	"sortedtype.h"
+
