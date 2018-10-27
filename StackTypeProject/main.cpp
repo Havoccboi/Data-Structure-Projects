@@ -14,20 +14,24 @@ void print(StackType<T> &s)
 }
 int main()
 {
-    StackType<int> s;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    s.push(3);
-    s.push(4);
-    s.push(3);
-    s.push(4);
-    s.push(3);
-    s.push(4);
-    s.push(3);
-    s.push(4);
-
-    print(s);
+    StackType<int> open;
+    string s;
+    cin >> s;
+    bool flag=1;
+    //bracket balanced matching:
+    for(int i=0;i<s.size() && flag;i++)
+    {
+        if(s[i]=='(')
+          open.push(i);
+        if(s[i]==')')
+        {
+          if(open.isempty())
+            flag=0;
+          open.pop();
+        }
+    }
+    if(open.isempty())
+        flag=1;
+    cout << (flag?"Balanced\n":"Not Balanced\n");
     return 0;
 }
