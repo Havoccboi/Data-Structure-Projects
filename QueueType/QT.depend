@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1541058755 source:c:\users\my pc\desktop\qt\main.cpp
+	<iostream>
+	"QueType.cpp"
+
+1541058526 c:\users\my pc\desktop\qt\quetype.cpp
+	"QueType.h"
+
+1541058588 c:\users\my pc\desktop\qt\quetype.h
+
+1541058526 source:c:\users\my pc\desktop\qt\quetype.cpp
+	"QueType.h"
+
