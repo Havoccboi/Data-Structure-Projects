@@ -1,0 +1,202 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+template <class T>
+class Stack{
+public:
+    typedef struct Node {
+        T item;
+        Node *next;
+        Node(T val)
+        {
+            item=val;
+            next=NULL;
+        }
+        Node()
+        {
+            next=NULL;
+        }
+    } Node;
+
+    Stack()
+    {
+        topPtr=NULL;
+    }
+    void push(T x)
+    {
+        Node *n = new Node(x);
+        n->next=topPtr;
+        topPtr=n;
+
+    }
+    T top()
+    {
+        return topPtr->item;
+    }
+    void pop()
+    {
+        Node *n = topPtr;
+        topPtr=topPtr->next;
+        delete n;
+    }
+    void print()
+    {
+        Node *n = topPtr;
+        while(n!=NULL)
+        {
+            cout << n->item <<endl;
+            n=n->next;
+        }
+    }
+
+private:
+    Node *topPtr;
+};
+
+bool isequalprecedence(char a, char b)
+{
+    if(a=='+'||a=='-')
+        if(b=='+'||b=='-')
+            return true;
+    if(a=='*'||a=='/')
+        if(b=='*' || b=='/')
+            return true;
+    return false;
+}
+bool lowerprecedence(char a, char b)
+{
+    if(a=='+'||a=='-')
+        if(b=='*'||b=='/')
+            return false;
+    else if(a=='*'||a=='/')
+        if(b=='+' || b=='-')
+            return true;
+    return false;
+}
+bool isop(char a)
+{
+    return (a=='+' || a=='*' || a=='/' || a=='-');
+}
+/*
+int main()
+{
+    //no parenthesis in postfix.
+    //infix is mathematical expression.
+    //intermediary stored in postfix from infix.
+
+    //1. take empty stack. put () around string push opening around stack.
+    //2. if operand, append into another string y.
+    //3. if operator, if stacktop='(', push into stack.
+    //4. else if operator found, check precedence.
+            //if lower precedency, push.
+            //    else if same or higher, pop stacktop, append to string, push operator.
+    //5. if ( push
+    //6. if ) pop item from stack. and append to string Y until opening is encountered.. pop opening.
+    //repeat 3-5 until empty
+    Stack<char> st;
+    string s;
+    cin >> s;
+    string res="";
+
+    s+=')';
+    st.push('(');
+    for(auto a:s)
+    {
+        if(isdigit(a))
+            res+=a;
+        else if (isop(a))
+        {
+            if(isop(a))
+            {
+                if(st.top()=='(')
+                    st.push(a);
+                else if(isop(st.top()))
+                {
+                    if(lowerprecedence(a,st.top()))
+                    {
+                        st.push(a);
+                    }
+                    else
+                    {
+                        res+=st.top();
+                        st.pop();
+                        st.push(a);
+                    }
+                }
+            }
+        }
+        else if (a=='(')
+            st.push(a);
+        else if (a==')')
+        {
+            while(st.top()!='(')
+            {
+                res+=st.top();
+                st.pop();
+            }
+            st.pop();
+        }
+    }
+    cout << res;
+}
+*/
+
+int main()
+{
+    string s,res="";
+    cin >> s;
+    Stack<char> st;
+    st.push('(');
+    for(int i=0;i<s.size();i++)
+    {
+
+        char a=s[i];
+        if(a=='(')
+            st.push('(');
+        else if(a==')')
+        {
+            while(st.top()!='(')
+            {
+                res+=st.top();
+                st.pop();
+            }
+            st.pop();
+        }
+        else if(isop(a))
+        {
+            if(st.top()=='(')
+                st.push(a);
+            else if(a=='*' || a=='/')
+            {
+
+                if(st.top()=='+' || st.top()=='-')
+                {
+                    st.push(a);
+                }
+                else
+                {
+                    res+=st.top();
+                    st.pop();
+                    st.push(a);
+                }
+            }
+            else
+            {
+                res+=st.top();
+                st.pop();
+                st.push(a);
+            }
+        }
+        else
+            res+=a;
+
+    }
+    while(st.top()!='(')
+    {
+        res+=st.top();
+        st.pop();
+
+    }
+    cout << res<<endl;
+}
