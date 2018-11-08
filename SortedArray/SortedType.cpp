@@ -42,7 +42,7 @@ void SortedType<ItemType>::InsertItem(ItemType item)
     bool moreToSearch = (location < length);
     while (moreToSearch)
     {
-        if(item > info[location])
+        if(item >= info[location]) //>= used to avoid issues when duplicates are inserted.
         {
             location++;
             moreToSearch = (location < length);
