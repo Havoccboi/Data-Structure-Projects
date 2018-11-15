@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1542266442 source:c:\users\my pc\desktop\llsort\main.cpp
+	<iostream>
+
+1542268915 source:c:\users\my pc\desktop\llsort\unsortedtype.cpp
+	"unsortedtype.h"
+	<iostream>
+
+1542268879 c:\users\my pc\desktop\llsort\unsortedtype.h
+
