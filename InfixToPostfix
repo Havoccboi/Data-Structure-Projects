@@ -1,248 +1,86 @@
-#include <bits/stdc++.h>
-//edit: use delimiters to implement a functioning multidigit calculator
-using namespace std;
-
-template <class T>
-class Stack{
-public:
-    typedef struct Node {
-        T item;
-        Node *next;
-        Node(T val)
-        {
-            item=val;
-            next=NULL;
-        }
-        Node()
-        {
-            next=NULL;
-        }
-    } Node;
-
-    Stack()
-    {
-        topPtr=NULL;
-    }
-    void push(T x)
-    {
-        Node *n = new Node(x);
-        n->next=topPtr;
-        topPtr=n;
-
-    }
-    T top()
-    {
-        return topPtr->item;
-    }
-    void pop()
-    {
-        Node *n = topPtr;
-        topPtr=topPtr->next;
-        delete n;
-    }
-    void print()
-    {
-        Node *n = topPtr;
-        while(n!=NULL)
-        {
-            cout << n->item <<endl;
-            n=n->next;
-        }
-    }
-
-private:
-    Node *topPtr;
-};
-
-bool isequalprecedence(char a, char b)
-{
-    if(a=='+'||a=='-')
-        if(b=='+'||b=='-')
-            return true;
-    if(a=='*'||a=='/')
-        if(b=='*' || b=='/')
-            return true;
-    return false;
-}
-bool lowerprecedence(char a, char b)
-{
-    if(a=='+'||a=='-')
-        if(b=='*'||b=='/')
-            return false;
-    else if(a=='*'||a=='/')
-        if(b=='+' || b=='-')
-            return true;
-    return false;
-}
-bool isop(char a)
-{
-    return (a=='+' || a=='*' || a=='/' || a=='-');
-}
-
-double operation(int a, int b, char c)
-{
-    if(c=='+')
-        return a+b;
-    if(c=='-')
-        return a-b;
-    if(c=='*')
-        return a*b;
-    if(c=='/')
-        return a/(double)b;
-
-
-}
-/*
-int main()
-{
-    //no parenthesis in postfix.
-    //infix is mathematical expression.
-    //intermediary stored in postfix from infix.
-
-    //1. take empty stack. put () around string push opening around stack.
-    //2. if operand, append into another string y.
-    //3. if operator, if stacktop='(', push into stack.
-    //4. else if operator found, check precedence.
-            //if lower precedency, push.
-            //    else if same or higher, pop stacktop, append to string, push operator.
-    //5. if ( push
-    //6. if ) pop item from stack. and append to string Y until opening is encountered.. pop opening.
-    //repeat 3-5 until empty
-    Stack<char> st;
-    string s;
-    cin >> s;
-    string res="";
-
-    s+=')';
-    st.push('(');
-    for(auto a:s)
-    {
-        if(isdigit(a))
-            res+=a;
-        else if (isop(a))
-        {
-            if(isop(a))
-            {
-                if(st.top()=='(')
-                    st.push(a);
-                else if(isop(st.top()))
-                {
-                    if(lowerprecedence(a,st.top()))
-                    {
-                        st.push(a);
-                    }
-                    else
-                    {
-                        res+=st.top();
-                        st.pop();
-                        st.push(a);
-                    }
-                }
-            }
-        }
-        else if (a=='(')
-            st.push(a);
-        else if (a==')')
-        {
-            while(st.top()!='(')
-            {
-                res+=st.top();
-                st.pop();
-            }
-            st.pop();
-        }
-    }
-    cout << res;
-}
-*/
-
-int main()
-{
-    string s,res="";
-    cin >> s;
-    Stack<char> st;
-    st.push('(');
-    for(int i=0;i<s.size();i++)
-    {
-
-        char a=s[i];
-        if(a=='(')
-            st.push('(');
-        else if(a==')')
-        {
-            while(st.top()!='(')
-            {
-                res+=st.top();
-                st.pop();
-            }
-            st.pop();
-        }
-        else if(isop(a))
-        {
-            if(st.top()=='(')
-                st.push(a);
-            else if(a=='*' || a=='/')
-            {
-
-                if(st.top()=='+' || st.top()=='-')
-                {
-                    st.push(a);
-                }
-                else
-                {
-                    res+=st.top();
-                    st.pop();
-                    st.push(a);
-                }
-            }
-            else
-            {
-                res+=st.top();
-                st.pop();
-                st.push(a);
-            }
-        }
-        else
-            res+=a;
-
-    }
-    while(st.top()!='(')
-    {
-        res+=st.top();
-        st.pop();
-
-    }
-    cout << res<<endl;
-    cout << endl<<endl;
-
-
-    double result=0;
-    Stack<string> eval;
-    stringstream ss;
-    for(int i=0;i<res.size();i++)
-    {
-        if(isop(res[i]))
-        {
-            istringstream iss(eval.top());
-            int a,b;
-            iss>>a;
-            eval.pop();
-            istringstream iss2(eval.top());
-            iss2>>b;
-            eval.pop();
-            result=operation(b,a,res[i]);
-            ss<<result;
-            eval.push(ss.str());
-        }
-        else
-            if(isdigit(res[i]))
-            {
-                //istringstream iss1
-                string a="";
-                a+=res[i];
-                eval.push(a);
-            }
-    }
-    cout << eval.top()<<endl;
-
-}
+/* C++ implementation to convert infix expression to postfix*/
+// Note that here we use std::stack  for Stack operations 
+#include<bits/stdc++.h> 
+using namespace std; 
+  
+//Function to return precedence of operators 
+int prec(char c) 
+{ 
+    if(c == '^') 
+    return 3; 
+    else if(c == '*' || c == '/') 
+    return 2; 
+    else if(c == '+' || c == '-') 
+    return 1; 
+    else
+    return -1; 
+} 
+  
+// The main function to convert infix expression 
+//to postfix expression 
+void infixToPostfix(string s) 
+{ 
+    std::stack<char> st; 
+    st.push('N'); 
+    int l = s.length(); 
+    string ns; 
+    for(int i = 0; i < l; i++) 
+    { 
+        // If the scanned character is an operand, add it to output string. 
+        if((s[i] >= 'a' && s[i] <= 'z')||(s[i] >= 'A' && s[i] <= 'Z')) 
+        ns+=s[i]; 
+  
+        // If the scanned character is an ‘(‘, push it to the stack. 
+        else if(s[i] == '(') 
+          
+        st.push('('); 
+          
+        // If the scanned character is an ‘)’, pop and to output string from the stack 
+        // until an ‘(‘ is encountered. 
+        else if(s[i] == ')') 
+        { 
+            while(st.top() != 'N' && st.top() != '(') 
+            { 
+                char c = st.top(); 
+                st.pop(); 
+               ns += c; 
+            } 
+            if(st.top() == '(') 
+            { 
+                char c = st.top(); 
+                st.pop(); 
+            } 
+        } 
+          
+        //If an operator is scanned 
+        else{ 
+            while(st.top() != 'N' && prec(s[i]) <= prec(st.top())) 
+            { 
+                char c = st.top(); 
+                st.pop(); 
+                ns += c; 
+            } 
+            st.push(s[i]); 
+        } 
+  
+    } 
+    //Pop all the remaining elements from the stack 
+    while(st.top() != 'N') 
+    { 
+        char c = st.top(); 
+        st.pop(); 
+        ns += c; 
+    } 
+      
+    cout << ns << endl; 
+  
+} 
+  
+//Driver program to test above functions 
+int main() 
+{ 
+    string exp = "a+b*(c^d-e)^(f+g*h)-i"; 
+    infixToPostfix(exp); 
+    return 0; 
+} 
+// This code is contributed by Gautam Singh
