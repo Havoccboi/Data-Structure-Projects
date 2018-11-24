@@ -1,7 +1,7 @@
 #include <iostream>
 #include "QueType.cpp"
 using namespace std;
-
+//forgot what this does lol
 int level[int(1e5)];
 int main()
 {
