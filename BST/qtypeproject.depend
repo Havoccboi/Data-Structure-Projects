@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1543478362 source:c:\users\my pc\desktop\assignment_1813077042\qtypeproject\binarysearchtree.cpp
+	"binarysearchtree.h"
+	"quetype.cpp"
+	<iostream>
+
+1543478287 c:\users\my pc\desktop\assignment_1813077042\qtypeproject\binarysearchtree.h
+	"quetype.h"
+
+1543478437 c:\users\my pc\desktop\assignment_1813077042\qtypeproject\quetype.h
+
+1543478453 c:\users\my pc\desktop\assignment_1813077042\qtypeproject\quetype.cpp
+	"quetype.h"
+	<iostream>
+
+1543478453 source:c:\users\my pc\desktop\assignment_1813077042\qtypeproject\quetype.cpp
+	"quetype.h"
+	<iostream>
+
