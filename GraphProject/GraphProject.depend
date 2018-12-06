@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1544084730 source:c:\users\my pc\desktop\midmakeup\lab02\graphproject\graphtype.cpp
+	"graphtype.h"
+	"stacktype.cpp"
+	"quetype.cpp"
+	<iostream>
+
+1544084286 c:\users\my pc\desktop\midmakeup\lab02\graphproject\graphtype.h
+	"stacktype.h"
+	"quetype.h"
+
+1544083518 c:\users\my pc\desktop\midmakeup\lab02\graphproject\stacktype.h
+
+1544083469 c:\users\my pc\desktop\midmakeup\lab02\graphproject\quetype.h
+
+1544083540 c:\users\my pc\desktop\midmakeup\lab02\graphproject\stacktype.cpp
+	<iostream>
+	"stacktype.h"
+
+1544083492 c:\users\my pc\desktop\midmakeup\lab02\graphproject\quetype.cpp
+	"quetype.h"
+	<iostream>
+
+1544083492 source:c:\users\my pc\desktop\midmakeup\lab02\graphproject\quetype.cpp
+	"quetype.h"
+	<iostream>
+
+1544083540 source:c:\users\my pc\desktop\midmakeup\lab02\graphproject\stacktype.cpp
+	<iostream>
+	"stacktype.h"
+
+1544084512 source:c:\users\my pc\desktop\midmakeup\lab02\graphproject\main.cpp
+	<iostream>
+	"GraphType.cpp"
+
+1544084730 c:\users\my pc\desktop\midmakeup\lab02\graphproject\graphtype.cpp
+	"graphtype.h"
+	"stacktype.cpp"
+	"quetype.cpp"
+	<iostream>
+
